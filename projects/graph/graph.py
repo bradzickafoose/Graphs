@@ -13,7 +13,7 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        self.vertices[vertex_is] = set()
+        self.vertices[vertex_id] = set()
 
     def add_edge(self, v1, v2):
         """
@@ -61,14 +61,29 @@ class Graph:
               new_path.append(next_vert)
               qq.enqueue(new_path)
 
-        pass  # TODO
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Create a empty stack and push the starting vertex ID
+        stack = Stack()
+        stack.push(starting_vertex)
+        # Create a Set to store visited vertices
+        visited = set()
+        # While the stack is not empty
+        while stack.size() > 0:
+          # Pop the first vertex
+          vertex = stack.pop()
+          # If that vertex has not been visited
+          if vertex not in visited:
+            # Mark it as visited
+            print(vertex)
+            visited.add(vertex)
+            # Then add all its neighbors to the top of the stack
+            for next_vert in self.get_neighbors(vertex):
+              stack.push(next_vert)
 
     def dft_recursive(self, starting_vertex):
         """
