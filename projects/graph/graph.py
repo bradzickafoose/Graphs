@@ -41,14 +41,14 @@ class Graph:
         beginning from starting_vertex.
         """
         # Create a q and enqueue starting vertex
-        qq = Queue()
-        qq.enqueue([starting_vertex])
+        queue = Queue()
+        queue.enqueue([starting_vertex])
         # Create a set of traversed vertices
         visited = set()
         # While queue is not empty:
-        while qq.size() > 0:
+        while queue.size() > 0:
           # dequeue/pop the first vertex
-          path = qq.dequeue()
+          path = queue.dequeue()
           # if not visited
           if path[-1] not in visited:
             # Do the thing
@@ -59,7 +59,7 @@ class Graph:
             for next_vert in self.get_neighbors(path[-1]):
               new_path = list(path)
               new_path.append(next_vert)
-              qq.enqueue(new_path)
+              queue.enqueue(new_path)
 
 
     def dft(self, starting_vertex):
