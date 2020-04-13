@@ -30,7 +30,10 @@ class Graph:
         """
         Get all neighbors (edges) of a vertex.
         """
-        pass  # TODO
+        if vertex_id in self.vertices:
+          return self.vertices[vertex_id]
+        else:
+          return None
 
     def bft(self, starting_vertex):
         """
