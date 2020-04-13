@@ -121,7 +121,7 @@ class Graph:
           path = queue.dequeue()
           # Grab the last vertex from the path
           last_vertex = path[-1]
-          # If that vertext has not been visited
+          # If that vertex has not been visited
           if last_vertex not in visited:
             # Check if it is the target
             if last_vertex == destination_vertex:
@@ -143,7 +143,33 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        # Create an empty stack and push A PATH TO the starting vertex ID
+        stack = Stack()
+        stack.push([starting_vertex])
+        #Create a Set to store visited vertices
+        visited = set()
+        # While the stack is not empty
+        while stack.size() > 0:
+          # Pop the first path
+          path = stack.pop()
+          # Grab the last vertex from the path
+          last_vertex = path[-1]
+          # If that vertex has not been visited
+          if last_vertex not in visited:
+            # Check if it is the target
+            if last_vertex == destination_vertex:
+              # If so, return path
+              return path
+            # Mark it as visited...
+            visited.add(last_vertex)
+            # Then add a path to its neighbors to the top of the stack
+            for neighbor in self.get_neighbors(last_vertex):
+              # Copy the path
+              path_copy = path.copy()
+              # Append the neighbor to the back
+              path_copy.append(neighbor)
+              stack.push(path_copy)
+
 
     def dfs_recursive(self, starting_vertex, destination_vertex):
         """
